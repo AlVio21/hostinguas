@@ -14,6 +14,22 @@
             "dest": "/public/assets/"
         },
         {
+            "src": "/buttons/(.*)",
+            "dest": "/public/buttons/"
+        },
+        {
+            "src": "/forms/(.*)",
+            "dest": "/public/forms/"
+        },
+        {
+            "src": "/icons/(.*)",
+            "dest": "/public/icons/"
+        },
+        {
+            "src": "/base/(.*)",
+            "dest": "/public/base/"
+        },
+        {
             "src": "/css/(.*)",
             "dest": "/public/css/"
         },
