@@ -10,7 +10,7 @@
           </svg> Ini adalah Menu Prices Silahkan Melihat Pricelist Logam Mulia Hari Ini</a></li>
           <br>
           <br>
-        @can('create', App\Prices::class)
+        @can('create', App\Price::class)
         <a href="{{ route('prices.create') }}" class="btn btn-primary">Tambah Price</a>
         @endcan
         <table class="table table-striped">
