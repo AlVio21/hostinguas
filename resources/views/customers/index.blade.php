@@ -5,6 +5,11 @@
 @section('content')
     <div class="container">
         <h1>Menu Customers</h1>
+        <svg class="nav-icon" width="25" height="20">
+            <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-group')}}"></use>
+          </svg> Ini adalah Menu Customers Silahkan Masukkan Data Customers Disini</a></li>
+          <br>
+          <br>
         <a href="{{ route('customers.create') }}" class="btn btn-primary">Tambah Customer</a>
         <table class="table table-striped">
             <thead>

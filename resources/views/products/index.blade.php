@@ -5,6 +5,11 @@
 @section('content')
     <div class="container">
         <h1>Menu Products</h1>
+        <svg class="nav-icon" width="25" height="20">
+            <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-diamond')}}"></use>
+          </svg> Ini adalah Menu Products Silahkan Melihat Berbagai Products yang Tersedia Disini</a></li>
+          <br>
+          <br>
         @can('create', App\Product::class)
         <a href="{{ route('products.create') }}" class="btn btn-primary">Tambah Product</a>
         @endcan

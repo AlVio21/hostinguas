@@ -5,6 +5,11 @@
 @section('content')
     <div class="container">
         <h1>Menu Prices</h1>
+        <svg class="nav-icon" width="25" height="20">
+            <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-money')}}"></use>
+          </svg> Ini adalah Menu Prices Silahkan Melihat Pricelist Logam Mulia Hari Ini</a></li>
+          <br>
+          <br>
         @can('create', App\Prices::class)
         <a href="{{ route('prices.create') }}" class="btn btn-primary">Tambah Price</a>
         @endcan

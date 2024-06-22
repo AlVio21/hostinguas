@@ -5,6 +5,11 @@
 @section('content')
     <div class="container">
         <h1>Menu Orders</h1>
+        <svg class="nav-icon" width="25" height="20">
+            <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-cart')}}"></use>
+          </svg> Ini adalah Menu Orders Silahkan Masukkan Data Orders Disini</a></li>
+          <br>
+          <br>
         <a href="{{ route('orders.create') }}" class="btn btn-primary">Tambah Order</a>
         <table class="table table-striped">
             <thead>
