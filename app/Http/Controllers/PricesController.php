@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\prices;
+use App\Models\Price;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class PricesController extends Controller
      */
     public function index()
     {
-        $prices = Prices::with('product')->get();
+        $prices = Price::with('product')->get();
         return view('prices.index', compact('prices'));
     }
 
@@ -31,17 +31,17 @@ class PricesController extends Controller
             'effective_date' => 'required|date',
         ]);
 
-        Prices::create($request->all());
+        Price::create($request->all());
         return redirect()->route('prices.index')->with('success', 'Price created successfully.');
     }
 
-    public function edit(Prices $price)
+    public function edit(Price $price)
     {
         $products = Product::all();
         return view('prices.edit', compact('price', 'products'));
     }
 
-    public function update(Request $request, Prices $price)
+    public function update(Request $request, Price $price)
     {
         $request->validate([
             'product_id' => 'required|exists:products,id',
@@ -53,7 +53,7 @@ class PricesController extends Controller
         return redirect()->route('prices.index')->with('success', 'Price updated successfully.');
     }
 
-    public function destroy(Prices $price)
+    public function destroy(Price $price)
     {
         $price->delete();
         return redirect()->route('prices.index')->with('success', 'Price deleted successfully.');
