@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
-use App\Models\customers;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -13,7 +12,8 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $customers = Customers::all();
+        // Menggunakan model Customer dengan penulisan yang benar
+        $customers = Customer::all();
         return view('customers.index', compact('customers'));
     }
 
@@ -30,16 +30,17 @@ class CustomersController extends Controller
             'phone' => 'nullable',
         ]);
 
-        Customers::create($request->all());
+        // Menggunakan model Customer dengan penulisan yang benar
+        Customer::create($request->all());
         return redirect()->route('customers.index')->with('success', 'Customer created successfully.');
     }
 
-    public function edit(Customers $customer)
+    public function edit(Customer $customer)
     {
         return view('customers.edit', compact('customer'));
     }
 
-    public function update(Request $request, Customers $customer)
+    public function update(Request $request, Customer $customer)
     {
         $request->validate([
             'name' => 'required',
@@ -51,7 +52,7 @@ class CustomersController extends Controller
         return redirect()->route('customers.index')->with('success', 'Customer updated successfully.');
     }
 
-    public function destroy(Customers $customer)
+    public function destroy(Customer $customer)
     {
         $customer->delete();
         return redirect()->route('customers.index')->with('success', 'Customer deleted successfully.');

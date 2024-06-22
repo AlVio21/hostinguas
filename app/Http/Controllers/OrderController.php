@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use App\Models\Customers;
+use App\Models\Customer;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -19,7 +19,7 @@ class OrderController extends Controller
 
     public function create()
     {
-        $customers = Customers::all();
+        $customers = Customer::all();
         $products = Product::all();
         return view('orders.create', compact('customers', 'products'));
     }
@@ -39,7 +39,7 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        $customers = Customers::all();
+        $customers = Customer::all();
         $products = Product::all();
         return view('orders.edit', compact('order', 'customers', 'products'));
     }
