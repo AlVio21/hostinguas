@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Gold & Precious Metals</title>
-    <link href="{{ asset('../public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('../css/app.css') }}" rel="stylesheet">
     <style>
         body {
             font-family: 'Nunito', sans-serif;
