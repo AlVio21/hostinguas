@@ -179,6 +179,14 @@
           <ol class="breadcrumb my-0">
             <li class="breadcrumb-item"><a href="dashboard">Home</a>
             </li>
+            <li class="breadcrumb-item"><a href="products">Products</a>
+            </li>
+            <li class="breadcrumb-item"><a href="customers">Customers</a>
+            </li>
+            <li class="breadcrumb-item"><a href="prices">Prices</a>
+            </li>
+            <li class="breadcrumb-item"><a href="orders">Orders</a>
+            </li>
             <li class="breadcrumb-item active"><span>@yield('breadcrumb')</span>
             </li>
           </ol>
