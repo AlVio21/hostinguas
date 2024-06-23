@@ -7,7 +7,7 @@
         <h1>Menu Prices</h1>
         <svg class="nav-icon" width="25" height="20">
             <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-money')}}"></use>
-          </svg> Ini adalah Menu Prices Silahkan Melihat Pricelist Logam Mulia Hari Ini</a></li>
+          </svg> Harga Logam Mulia di-update setiap hari pkl. 08.30 WIB</a></li>
           <br>
           <br>
         @can('create', App\Price::class)
