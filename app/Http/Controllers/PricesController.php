@@ -32,7 +32,7 @@ class PricesController extends Controller
         ]);
 
         Price::create($request->all());
-        return redirect()->route('prices.index')->with('success', 'Price created successfully.');
+        return redirect()->route('prices.index')->with('success', 'Mantap, Price Sudah Berhasil Ditambahkan.');
     }
 
     public function edit(Price $price)
@@ -50,12 +50,12 @@ class PricesController extends Controller
         ]);
 
         $price->update($request->all());
-        return redirect()->route('prices.index')->with('success', 'Price updated successfully.');
+        return redirect()->route('prices.index')->with('success', 'Mantap, Price Sudah Berhasil Diperbarui.');
     }
 
     public function destroy(Price $price)
     {
         $price->delete();
-        return redirect()->route('prices.index')->with('success', 'Price deleted successfully.');
+        return redirect()->route('prices.index')->with('success', 'Mantap, Price Sudah Berhasil Dihapus.');
     }
 }

@@ -15,7 +15,7 @@
         <figure class="highcharts-figure">
             <div id="container"></div>
             <p class="highcharts-description">
-                Diagram yang menampilkan jumlah orders berdasarkan product.
+                Diagram menampilkan jumlah orders berdasarkan product. Diagram akan direset pada awal bulan.
             </p>
         </figure>
 

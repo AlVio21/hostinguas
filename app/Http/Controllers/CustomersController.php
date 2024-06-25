@@ -32,7 +32,7 @@ class CustomersController extends Controller
 
         // Menggunakan model Customer dengan penulisan yang benar
         Customer::create($request->all());
-        return redirect()->route('customers.index')->with('success', 'Customer created successfully.');
+        return redirect()->route('customers.index')->with('success', 'Mantap, Customer Sudah Berhasil Ditambahkan.');
     }
 
     public function edit(Customer $customer)
@@ -49,12 +49,12 @@ class CustomersController extends Controller
         ]);
 
         $customer->update($request->all());
-        return redirect()->route('customers.index')->with('success', 'Customer updated successfully.');
+        return redirect()->route('customers.index')->with('success', 'Mantap, Customer Sudah Berhasil Diperbarui.');
     }
 
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully.');
+        return redirect()->route('customers.index')->with('success', 'Mantap, Customer Sudah Berhasil Dihapus.');
     }
 }

@@ -34,7 +34,7 @@ class OrderController extends Controller
         ]);
 
         Order::create($request->all());
-        return redirect()->route('orders.index')->with('success', 'Order created successfully.');
+        return redirect()->route('orders.index')->with('success', 'Mantap, Order Sudah Berhasil Ditambahkan.');
     }
 
     public function edit(Order $order)
@@ -54,12 +54,12 @@ class OrderController extends Controller
         ]);
 
         $order->update($request->all());
-        return redirect()->route('orders.index')->with('success', 'Order updated successfully.');
+        return redirect()->route('orders.index')->with('success', 'Mantap, Order Sudah Berhasil Diperbarui.');
     }
 
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
+        return redirect()->route('orders.index')->with('success', 'Mantap, Order Sudah Berhasil Dihapus.');
     }
 }

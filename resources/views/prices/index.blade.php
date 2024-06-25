@@ -38,7 +38,7 @@
                             <form action="{{ route('prices.destroy', $price->id) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger show_confirm">Delete</button>
                             </form>
                             @endcan
                         </td>
@@ -47,4 +47,41 @@
             </tbody>
         </table>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    @if (session('success'))
+        
+        <script>
+          Swal.fire({
+            title: "Good job!",
+            text: "{{session('success')}}",
+            icon: "success"
+          });
+        </script>
+    @endif
+    
+    <script type="text/javascript">
+     
+      $('.show_confirm').click(function(event) {
+           let form =  $(this).closest("form");
+           let name = $(this).data("name");
+           event.preventDefault();
+           Swal.fire({
+            title: "Beneran Mau Dihapus Bang?",
+            text: "Kalo Dihapus Nanti Hilang Permanen Lohh!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yaa, Hapus Aja Bang!"
+          })
+           .then((willDelete) => {
+             if (willDelete.isConfirmed) {
+               form.submit();
+             }
+           });
+       });
+    
+    </script>
 @endsection
