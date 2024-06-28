@@ -65,7 +65,7 @@
             }
 
             .highcharts-data-table tr:hover {
-                background: #f1f7ff;
+                background: #fffef1;
             }
         </style>
 
@@ -115,7 +115,8 @@
                         @foreach($ordersByProduct as $order)
                             {{ $order->total_orders }},
                         @endforeach
-                    ]
+                    ],
+                    color: '#FFD700' 
                 }]
             });
         </script>
