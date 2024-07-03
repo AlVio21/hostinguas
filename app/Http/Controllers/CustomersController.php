@@ -12,6 +12,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
+        //jika role user D maka 
         // Menggunakan model Customer dengan penulisan yang benar
         $customers = Customer::all();
         return view('customers.index', compact('customers'));
