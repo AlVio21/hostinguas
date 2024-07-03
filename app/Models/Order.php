@@ -9,6 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['customer_id', 'product_id', 'order_date', 'total_amount', 'price_id'];
+
     public function customer()
     {
         return $this->belongsTo(Customer::class);
@@ -24,5 +26,8 @@ class Order extends Model
         return $this->belongsTo(Price::class);
     }
 
-    protected $fillable = ['customer_id', 'product_id','order_date', 'total_amount', 'price_id'];
+    public function getTotalHargaAttribute()
+    {
+        return $this->total_amount * $this->price->price;
+    }
 }

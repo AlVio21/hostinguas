@@ -6,10 +6,9 @@
     <div class="container">
         <h1>Menu Orders</h1>
         <svg class="nav-icon" width="25" height="20">
-            <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-cart')}}"></use>
-          </svg> Ini adalah Menu Orders Silahkan Masukkan Data Orders Disini</a></li>
-          <br>
-          <br>
+            <use xlink:href="{{ url('vendors/@coreui/icons/svg/free.svg#cil-cart') }}"></use>
+        </svg> Ini adalah Menu Orders Silahkan Masukkan Data Orders Disini</a></li>
+        <br><br>
         <a href="{{ route('orders.create') }}" class="btn btn-primary">Tambah Order</a>
         <table class="table table-striped">
             <thead>
@@ -19,6 +18,7 @@
                     <th>Product</th>
                     <th>Order Date</th>
                     <th>Total Amount</th>
+                    <th>Price</th>
                     <th>Total Harga</th>
                     <th></th>
                 </tr>
@@ -29,9 +29,10 @@
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->customer->name }}</td>
                         <td>{{ $order->product->name }}</td>
-                        <td>{{ $order->order_date}}</td>
+                        <td>{{ $order->order_date }}</td>
                         <td>{{ $order->total_amount }}</td>
-                        <td>{{ $order->price->name}}</td>
+                        <td>{{ $order->price->price }}</td>
+                        <td>{{ $order->total_harga }}</td>
                         <td>
                             <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display:inline-block;">
@@ -49,38 +50,33 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     @if (session('success'))
-        
         <script>
-          Swal.fire({
-            title: "Good job!",
-            text: "{{session('success')}}",
-            icon: "success"
-          });
+            Swal.fire({
+                title: "Good job!",
+                text: "{{ session('success') }}",
+                icon: "success"
+            });
         </script>
     @endif
     
     <script type="text/javascript">
-     
-      $('.show_confirm').click(function(event) {
-           let form =  $(this).closest("form");
-           let name = $(this).data("name");
-           event.preventDefault();
-           Swal.fire({
-            title: "Beneran Mau Dihapus Bang?",
-            text: "Kalo Dihapus Nanti Hilang Permanen Lohh!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yaa, Hapus Aja Bang!"
-          })
-           .then((willDelete) => {
-             if (willDelete.isConfirmed) {
-               form.submit();
-             }
-           });
-       });
-    
+        $('.show_confirm').click(function(event) {
+            let form = $(this).closest("form");
+            let name = $(this).data("name");
+            event.preventDefault();
+            Swal.fire({
+                title: "Beneran Mau Dihapus Bang?",
+                text: "Kalo Dihapus Nanti Hilang Permanen Lohh!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yaa, Hapus Aja Bang!"
+            }).then((willDelete) => {
+                if (willDelete.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
     </script>
-    
 @endsection

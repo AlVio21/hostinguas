@@ -30,7 +30,7 @@ class CustomerController extends Controller
             'name' => 'required|unique:customers',
             'email' => 'required|email|unique:customers',
             'phone' => 'nullable',
-            // Tambahkan validasi lain yang diperlukan
+           
         ]);
 
         $customer = Customer::create($validate);

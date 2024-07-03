@@ -29,7 +29,7 @@
                 <input type="date" class="form-control" id="order_date" name="order_date" required>
             </div>
             <div class="form-group">
-                <label for="total_amount">Total Amount</label>
+                <label for="total_amount">Banyak Barang</label>
                 <input type="number" class="form-control" id="total_amount" name="total_amount" step="0.01" required>
             </div>
             <div class="form-group">

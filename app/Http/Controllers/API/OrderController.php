@@ -31,7 +31,7 @@ class OrderController extends Controller
             'product_id' => 'required|exists:products,id',
             'order_date' => 'required|date',
             'total_amount' => 'required|numeric',
-            // Tambahkan validasi lain yang diperlukan
+            
         ]);
 
         $order = Order::create($validate);

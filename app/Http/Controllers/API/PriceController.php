@@ -30,7 +30,7 @@ class PriceController extends Controller
             'product_id' => 'required|exists:products,id',
             'price' => 'required|numeric',
             'effective_date' => 'required|date',
-            // Tambahkan validasi lain yang diperlukan
+            
         ]);
 
         $price = Price::create($validate);

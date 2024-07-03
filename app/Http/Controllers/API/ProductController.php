@@ -30,7 +30,7 @@ class ProductController extends Controller
             'name' => 'required|unique:products',
             'description' => 'required',
             'price' => 'required|numeric',
-            // Tambahkan validasi lain yang diperlukan
+            
         ]);
 
         $product = Product::create($validate);

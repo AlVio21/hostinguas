@@ -5,23 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\Price;
 use Illuminate\Http\Request;
-
 
 class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('customer', 'product')->get();
+        $orders = Order::with('customer', 'product', 'price')->get();
         return view('orders.index', compact('orders'));
-
     }
 
     public function create()
     {
         $customers = Customer::all();
         $products = Product::all();
-        return view('orders.create', compact('customers', 'products'));
+        $prices = Price::all();
+        return view('orders.create', compact('customers', 'products', 'prices'));
     }
 
     public function store(Request $request)
@@ -42,7 +42,8 @@ class OrderController extends Controller
     {
         $customers = Customer::all();
         $products = Product::all();
-        return view('orders.edit', compact('order', 'customers', 'products'));
+        $prices = Price::all();
+        return view('orders.edit', compact('order', 'customers', 'products', 'prices'));
     }
 
     public function update(Request $request, Order $order)
