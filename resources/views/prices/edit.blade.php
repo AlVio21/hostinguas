@@ -9,6 +9,10 @@
             @csrf
             @method('PUT')
             <div class="form-group">
+                <label for="effective_date">Kategori</label>
+                <input type="text" class="form-control" id="kategori" name="kategori" value="{{ $price->kategori }}" required>
+            </div>
+            <div class="form-group">
                 <label for="product_id">Product</label>
                 <select class="form-control" id="product_id" name="product_id" required>
                     @foreach ($products as $product)

@@ -38,6 +38,16 @@
                 <label for="total_amount">Total Amount</label>
                 <input type="number" class="form-control" id="total_amount" name="total_amount" value="{{ $order->total_amount }}" step="0.01" required>
             </div>
+            <div class="form-group">
+                <label for="product_id">Price</label>
+                <select class="form-control" id="price_id" name="price_id" required>
+                    @foreach ($prices as $price)
+                        <option value="{{ $price->id }}" {{ $order->price_id == $price->id ? 'selected' : '' }}>
+                            {{ $product->name }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>

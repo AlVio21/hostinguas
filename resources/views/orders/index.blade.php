@@ -19,6 +19,7 @@
                     <th>Product</th>
                     <th>Order Date</th>
                     <th>Total Amount</th>
+                    <th>Total Harga</th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,8 +29,9 @@
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->customer->name }}</td>
                         <td>{{ $order->product->name }}</td>
-                        <td>{{ $order->order_date }}</td>
+                        <td>{{ $order->order_date}}</td>
                         <td>{{ $order->total_amount }}</td>
+                        <td>{{ $order->price->name}}</td>
                         <td>
                             <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display:inline-block;">

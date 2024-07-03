@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained();
             $table->date('order_date');
             $table->decimal('total_amount', 8, 2);
+            
             $table->timestamps();
         });
     }

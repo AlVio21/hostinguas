@@ -19,5 +19,10 @@ class Order extends Model
         return $this->belongsTo(Product::class);
     }
 
-    protected $fillable = ['customer_id', 'product_id','order_date', 'total_amount'];
+    public function price()
+    {
+        return $this->belongsTo(Price::class);
+    }
+
+    protected $fillable = ['customer_id', 'product_id','order_date', 'total_amount', 'price_id'];
 }

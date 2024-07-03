@@ -31,6 +31,7 @@ class OrderController extends Controller
             'product_id' => 'required|exists:products,id',
             'order_date' => 'required|date',
             'total_amount' => 'required|numeric',
+            'price_id' => 'required|exists:prices,id',
         ]);
 
         Order::create($request->all());
@@ -51,6 +52,7 @@ class OrderController extends Controller
             'product_id' => 'required|exists:products,id',
             'order_date' => 'required|date',
             'total_amount' => 'required|numeric',
+            'price_id' => 'required|exists:prices,id',
         ]);
 
         $order->update($request->all());

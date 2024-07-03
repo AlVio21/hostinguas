@@ -14,5 +14,5 @@ class Price extends Model
         return $this->belongsTo(Product::class);
     }
 
-    protected $fillable = ['product_id', 'price', 'effective_date'];
+    protected $fillable = ['kategori', 'product_id', 'price', 'effective_date'];
 }

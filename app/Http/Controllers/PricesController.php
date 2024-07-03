@@ -26,6 +26,7 @@ class PricesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'kategori' => 'required',
             'product_id' => 'required|exists:products,id',
             'price' => 'required|numeric',
             'effective_date' => 'required|date',
@@ -44,6 +45,7 @@ class PricesController extends Controller
     public function update(Request $request, Price $price)
     {
         $request->validate([
+            'kategori' => 'required',
             'product_id' => 'required|exists:products,id',
             'price' => 'required|numeric',
             'effective_date' => 'required|date',

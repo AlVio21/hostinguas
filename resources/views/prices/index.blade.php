@@ -17,6 +17,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Kategori</th>
                     <th>Product</th>
                     <th>Price</th>
                     <th>Effective Date</th>
@@ -27,6 +28,7 @@
                 @foreach ($prices as $price)
                     <tr>
                         <td>{{ $price->id }}</td>
+                        <td>{{ $price->kategori}}</td>
                         <td>{{ $price->product->name }}</td>
                         <td>{{ $price->price }}</td>
                         <td>{{ $price->effective_date }}</td>

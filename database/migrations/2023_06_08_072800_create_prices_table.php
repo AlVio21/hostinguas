@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
+            // $table->kategori('kategori');
             $table->foreignId('product_id')->constrained();
             $table->decimal('price', 8, 2);
             $table->date('effective_date');

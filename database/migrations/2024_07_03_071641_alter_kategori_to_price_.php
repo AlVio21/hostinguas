@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prices', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('prices', function (Blueprint $table) {
+            $table->string('kategori');
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prices');
+        Schema::table('prices', function (Blueprint $table) {
+            //
+        });
     }
 };
