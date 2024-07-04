@@ -27,10 +27,9 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'customer_id' => 'required|exists:customers,id',
-            'product_id' => 'required|exists:products,id',
             'order_date' => 'required|date',
             'total_amount' => 'required|numeric',
+            'price_id' => 'required|exists:prices,id',
             
         ]);
 
@@ -45,11 +44,9 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'customer_id' => 'required|exists:customers,id',
-            'product_id' => 'required|exists:products,id',
             'order_date' => 'required|date',
             'total_amount' => 'required|numeric',
-            // Tambahkan validasi lain yang diperlukan
+            'price_id' => 'required|exists:prices,id',
         ]);
 
         Order::where('id', $id)->update($validate);

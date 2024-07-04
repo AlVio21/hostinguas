@@ -13,13 +13,13 @@ class CustomerController extends Controller
     {
         $customers = Customer::all();
         if ($customers->isEmpty()) {
-            $response['message'] = 'Tidak ada customer yang ditemukan.';
+            $response['message'] = 'Tidak ada testimoni yang ditemukan.';
             $response['success'] = false;
             return response()->json($response, Response::HTTP_NOT_FOUND);
         }
 
         $response['success'] = true;
-        $response['message'] = 'Customer ditemukan.';
+        $response['message'] = 'Testimoni ditemukan.';
         $response['data'] = $customers;
         return response()->json($response, Response::HTTP_OK);
     }
@@ -27,16 +27,18 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'name' => 'required|unique:customers',
-            'email' => 'required|email|unique:customers',
-            'phone' => 'nullable',
+            'order_id' => 'required|exists:orders,id',
+            'name' => 'required|string|max:255',
+            'alamat' => 'nullable|string',
+            'phone' => 'nullable|string|max:15',
+            'description' => 'nullable|string',
            
         ]);
 
         $customer = Customer::create($validate);
         if ($customer) {
             $response['success'] = true;
-            $response['message'] = 'Customer berhasil ditambahkan.';
+            $response['message'] = 'Testimoni berhasil ditambahkan.';
             return response()->json($response, Response::HTTP_CREATED);
         }
     }
@@ -44,15 +46,16 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:customers,email,' . $id,
-            'phone' => 'nullable',
-            // Tambahkan validasi lain yang diperlukan
+            'order_id' => 'required|exists:orders,id',
+            'name' => 'required|string|max:255',
+            'alamat' => 'nullable|string',
+            'phone' => 'nullable|string|max:15',
+            'description' => 'nullable|string',
         ]);
 
         Customer::where('id', $id)->update($validate);
         $response['success'] = true;
-        $response['message'] = 'Customer berhasil diperbarui.';
+        $response['message'] = 'Testimoni berhasil diperbarui.';
         return response()->json($response, Response::HTTP_OK);
     }
 
@@ -62,11 +65,11 @@ class CustomerController extends Controller
         if ($customer->exists()) {
             $customer->delete();
             $response['success'] = true;
-            $response['message'] = 'Customer berhasil dihapus.';
+            $response['message'] = 'Testimoni berhasil dihapus.';
             return response()->json($response, Response::HTTP_OK);
         } else {
             $response['success'] = false;
-            $response['message'] = 'Customer tidak ditemukan.';
+            $response['message'] = 'Testimoni tidak ditemukan.';
             return response()->json($response, Response::HTTP_NOT_FOUND);
         }
     }

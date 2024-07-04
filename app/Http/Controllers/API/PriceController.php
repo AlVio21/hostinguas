@@ -27,6 +27,7 @@ class PriceController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
+            'kategori' => 'required',
             'product_id' => 'required|exists:products,id',
             'price' => 'required|numeric',
             'effective_date' => 'required|date',
@@ -44,10 +45,10 @@ class PriceController extends Controller
     public function update(Request $request, $id)
     {
         $validate = $request->validate([
+            'kategori' => 'required',
             'product_id' => 'required|exists:products,id',
             'price' => 'required|numeric',
             'effective_date' => 'required|date',
-            // Tambahkan validasi lain yang diperlukan
         ]);
 
         Price::where('id', $id)->update($validate);

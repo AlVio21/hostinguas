@@ -68,7 +68,7 @@ class CustomersController extends Controller
         $request->validate([
             'order_id' => 'required|exists:orders,id',
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:customers,email,' . $customer->id,
+            'alamat' => 'nullable|string' . $customer->id,
             'phone' => 'nullable|string|max:15',
             'description' => 'nullable|string',
         ]);
