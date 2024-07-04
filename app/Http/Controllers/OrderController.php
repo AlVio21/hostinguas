@@ -11,21 +11,19 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('customer', 'price')->get();
+        $orders = Order::with('price')->get();
         return view('orders.index', compact('orders'));
     }
 
     public function create()
     {
-        $customers = Customer::all();
         $prices = Price::all();
-        return view('orders.create', compact('customers', 'prices'));
+        return view('orders.create', compact('prices'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'customer_id' => 'required|exists:customers,id',
             'order_date' => 'required|date',
             'total_amount' => 'required|numeric',
             'price_id' => 'required|exists:prices,id',
@@ -40,15 +38,13 @@ class OrderController extends Controller
 
     public function edit(Order $order)
     {
-        $customers = Customer::all();
         $prices = Price::all();
-        return view('orders.edit', compact('order', 'customers', 'prices'));
+        return view('orders.edit', compact('order', 'prices'));
     }
 
     public function update(Request $request, Order $order)
     {
         $request->validate([
-            'customer_id' => 'required|exists:customers,id',
             'order_date' => 'required|date',
             'total_amount' => 'required|numeric',
             'price_id' => 'required|exists:prices,id',

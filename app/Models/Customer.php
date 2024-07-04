@@ -9,5 +9,10 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'phone'];
+    protected $fillable = ['order_id', 'name', 'alamat', 'description', 'phone'];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

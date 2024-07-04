@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class CustomersController extends Controller
@@ -12,47 +13,73 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        //jika role user D maka 
-        // Menggunakan model Customer dengan penulisan yang benar
-        $customers = Customer::all();
+        $customers = Customer::with('order')->get();
         return view('customers.index', compact('customers'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        return view('customers.create');
+        $orders = Order::all();
+        return view('customers.create', compact('orders'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:customers,email',
-            'phone' => 'nullable',
+            'order_id' => 'required|exists:orders,id',
+            'name' => 'required|string|max:255',
+            'alamat' => 'nullable|string',
+            'phone' => 'nullable|string|max:15',
+            'description' => 'nullable|string',
         ]);
 
-        // Menggunakan model Customer dengan penulisan yang benar
         Customer::create($request->all());
         return redirect()->route('customers.index')->with('success', 'Mantap, Customer Sudah Berhasil Ditambahkan.');
     }
 
-    public function edit(Customer $customer)
+    /**
+     * Display the specified resource.
+     */
+    public function show(Customer $customer)
     {
-        return view('customers.edit', compact('customer'));
+        return view('customers.show', compact('customer'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Customer $customer)
+    {
+        $orders = Order::all();
+        return view('customers.edit', compact('customer', 'orders'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, Customer $customer)
     {
         $request->validate([
-            'name' => 'required',
+            'order_id' => 'required|exists:orders,id',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:customers,email,' . $customer->id,
-            'phone' => 'nullable',
+            'phone' => 'nullable|string|max:15',
+            'description' => 'nullable|string',
         ]);
 
         $customer->update($request->all());
         return redirect()->route('customers.index')->with('success', 'Mantap, Customer Sudah Berhasil Diperbarui.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Customer $customer)
     {
         $customer->delete();

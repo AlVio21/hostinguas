@@ -14,9 +14,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Customer</th>
                     <th>Order Date</th>
-                    <th>Total Amount</th>
+                    <th>Banyak Produk</th>
                     <th>Price</th>
                     <th>Total Harga</th>
                     <th></th>
@@ -26,7 +25,6 @@
                 @foreach ($orders as $order)
                     <tr>
                         <td>{{ $order->id }}</td>
-                        <td>{{ $order->customer->name }}</td>
                         <td>{{ $order->order_date }}</td>
                         <td>{{ $order->total_amount }}</td>
                         <td>{{ $order->price->price }}</td>

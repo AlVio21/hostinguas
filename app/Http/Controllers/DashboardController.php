@@ -5,20 +5,21 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $ordersByCustomer = Order::selectRaw('customer_id, COUNT(*) as total_orders')
-            ->groupBy('customer_id')
+        $customersByOrder = Customer::selectRaw('order_id, COUNT(*) as total_customers')
+            ->groupBy('order_id')
             ->get()
-            ->map(function ($order) {
-                $order->customer_name = Customer::find($order->customer_id)->name;
-                return $order;
+            ->map(function ($customer) {
+                $order = Order::find($customer->order_id);
+                $customer->order_name = $order ? $order->name : 'Unknown Order';
+                return $customer;
             });
 
-        return view('dashboard.index', compact('ordersByCustomer'));
+        return view('dashboard.index', compact('customersByOrder'));
     }
 }
-

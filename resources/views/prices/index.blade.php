@@ -4,14 +4,14 @@
 
 @section('content')
     <div class="container">
-        <h1>Menu Prices</h1>
+        <h1>Menu Kategori Prices</h1>
         <svg class="nav-icon" width="25" height="20">
             <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-money')}}"></use>
           </svg> Harga Logam Mulia di-update setiap hari pukul. 08.30 WIB</a></li>
           <br>
           <br>
         @can('create', App\Price::class)
-        <a href="{{ route('prices.create') }}" class="btn btn-primary">Tambah Price</a>
+        <a href="{{ route('prices.create') }}" class="btn btn-primary">Tambah Kategori</a>
         @endcan
         <table class="table table-striped">
             <thead>

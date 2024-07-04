@@ -71,53 +71,55 @@
 
         {{-- Javascript --}}
         <script>
-            Highcharts.chart('container', {
-                chart: {
-                    type: 'column'
-                },
-                title: {
-                    text: 'Jumlah Orders Berdasarkan Customer',
-                    align: 'center'
-                },
-                subtitle: {
-                    text: 'Source: Orders Database',
-                    align: 'left'
-                },
-                xAxis: {
-                    categories: [
-                        @foreach($ordersByCustomer as $order)
-                            '{{ $order->customer_name }}',
-                        @endforeach
-                    ],
-                    crosshair: true,
-                    accessibility: {
-                        description: 'Customer'
-                    }
-                },
-                yAxis: {
-                    min: 0,
+            document.addEventListener('DOMContentLoaded', function () {
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'column'
+                    },
                     title: {
-                        text: 'Jumlah Orders'
-                    }
-                },
-                tooltip: {
-                    valueSuffix: ' Orders'
-                },
-                plotOptions: {
-                    column: {
-                        pointPadding: 0.2,
-                        borderWidth: 0
-                    }
-                },
-                series: [{
-                    name: 'Orders',
-                    data: [
-                        @foreach($ordersByCustomer as $order)
-                            {{ $order->total_orders }},
-                        @endforeach
-                    ],
-                    color: '#FFD700'
-                }]
+                        text: 'Jumlah Customers Berdasarkan Order',
+                        align: 'center'
+                    },
+                    subtitle: {
+                        text: 'Source: Orders Database',
+                        align: 'left'
+                    },
+                    xAxis: {
+                        categories: [
+                            @foreach($customersByOrder as $customer)
+                                '{{ $customer->order_name }}',
+                            @endforeach
+                        ],
+                        crosshair: true,
+                        accessibility: {
+                            description: 'Order'
+                        }
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: 'Jumlah Customers'
+                        }
+                    },
+                    tooltip: {
+                        valueSuffix: ' Customers'
+                    },
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.2,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'Customers',
+                        data: [
+                            @foreach($customersByOrder as $customer)
+                                {{ $customer->total_customers }},
+                            @endforeach
+                        ],
+                        color: '#FFD700'
+                    }]
+                });
             });
         </script>
     </div>

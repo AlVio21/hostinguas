@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Customers')
+@section('title', 'Edit Customer')
 
 @section('content')
     <div class="container">
@@ -9,18 +9,30 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ $customer->name }}" required>
+                <label for="order_id">Order</label>
+                <select name="order_id" class="form-control" required>
+                    @foreach ($orders as $order)
+                        <option value="{{ $order->id }}" {{ $order->id == $customer->order_id ? 'selected' : '' }}>{{ $order->id }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ $customer->email }}" required>
+                <label for="name">Name</label>
+                <input type="text" name="name" class="form-control" value="{{ $customer->name }}" required>
+            </div>
+            <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <input type="alamat" name="email" class="form-control" value="{{ $customer->alamat }}" required>
             </div>
             <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" value="{{ $customer->phone }}">
+                <input type="text" name="phone" class="form-control" value="{{ $customer->phone }}">
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control">{{ $customer->description }}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Testimoni</button>
         </form>
     </div>
 @endsection

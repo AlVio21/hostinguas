@@ -66,18 +66,18 @@
           <svg class="nav-icon">
             <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-diamond')}}"></use>
           </svg> Products</a></li>
-      <li class="nav-item"><a class="nav-link" href="{{url('customers')}}">
-          <svg class="nav-icon">
-            <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-group')}}"></use>
-          </svg> Customers</a></li>
       <li class="nav-item"><a class="nav-link" href="{{url('prices')}}">
           <svg class="nav-icon">
             <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-money')}}"></use>
-          </svg> Prices</a></li>
+          </svg> Categories</a></li>
       <li class="nav-item"><a class="nav-link" href="{{url('orders')}}">
           <svg class="nav-icon">
             <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-cart')}}"></use>
           </svg> Orders</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{url('customers')}}">
+          <svg class="nav-icon">
+            <use xlink:href="{{url('vendors/@coreui/icons/svg/free.svg#cil-group')}}"></use>
+          </svg> Testimoni</a></li>
     </ul>
     <div class="sidebar-footer border-top d-none d-md-flex">
       <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
@@ -181,11 +181,11 @@
             </li>
             <li class="breadcrumb-item"><a href="products">Products</a>
             </li>
-            <li class="breadcrumb-item"><a href="customers">Customers</a>
-            </li>
             <li class="breadcrumb-item"><a href="prices">Prices</a>
             </li>
             <li class="breadcrumb-item"><a href="orders">Orders</a>
+            </li>
+            <li class="breadcrumb-item"><a href="customers">Testimoni</a>
             </li>
             <li class="breadcrumb-item active"><span>@yield('breadcrumb')</span>
             </li>
