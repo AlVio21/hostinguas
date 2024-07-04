@@ -9,16 +9,11 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['customer_id', 'product_id', 'order_date', 'total_amount', 'price_id'];
+    protected $fillable = ['customer_id', 'order_date', 'total_amount', 'price_id', 'total_harga'];
 
     public function customer()
     {
         return $this->belongsTo(Customer::class);
-    }
-
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
     }
 
     public function price()
@@ -26,8 +21,13 @@ class Order extends Model
         return $this->belongsTo(Price::class);
     }
 
-    public function getTotalHargaAttribute()
+    public static function boot()
     {
-        return $this->total_amount * $this->price->price;
+        parent::boot();
+
+        static::saving(function ($order) {
+            $order->total_harga = $order->total_amount * $order->price->price;
+        });
     }
 }
+

@@ -15,7 +15,7 @@
         <figure class="highcharts-figure">
             <div id="container"></div>
             <p class="highcharts-description">
-                Diagram menampilkan jumlah orders berdasarkan product. Diagram akan direset pada awal bulan.
+                Diagram menampilkan jumlah orders berdasarkan Customers. Diagram akan direset pada awal bulan.
             </p>
         </figure>
 
@@ -76,7 +76,7 @@
                     type: 'column'
                 },
                 title: {
-                    text: 'Jumlah Orders Berdasarkan Product',
+                    text: 'Jumlah Orders Berdasarkan Customer',
                     align: 'center'
                 },
                 subtitle: {
@@ -85,13 +85,13 @@
                 },
                 xAxis: {
                     categories: [
-                        @foreach($ordersByProduct as $order)
-                            '{{ $order->product_name }}',
+                        @foreach($ordersByCustomer as $order)
+                            '{{ $order->customer_name }}',
                         @endforeach
                     ],
                     crosshair: true,
                     accessibility: {
-                        description: 'Product'
+                        description: 'Customer'
                     }
                 },
                 yAxis: {
@@ -112,11 +112,11 @@
                 series: [{
                     name: 'Orders',
                     data: [
-                        @foreach($ordersByProduct as $order)
+                        @foreach($ordersByCustomer as $order)
                             {{ $order->total_orders }},
                         @endforeach
                     ],
-                    color: '#FFD700' 
+                    color: '#FFD700'
                 }]
             });
         </script>

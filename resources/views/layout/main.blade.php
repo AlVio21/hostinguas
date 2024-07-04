@@ -200,7 +200,7 @@
             {{-- <script id="_carbonads_js" async="" type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CEAICKJY&amp;placement=coreuiio"></script> --}}
           </div>
           <div class="col-xl-12 col-xxl-8">
-            <h4 class="fw-bolder">Selamat Datang Di Aplikasi Logam Mulia</h4>
+            <h4 class="fw-bolder">Selamat Datang, {{auth()->user()->name}} Di Aplikasi Logam Mulia</h4>
             <p>Silahkan Melihat Semua Produk yang Tersedia di Aplikasi Kami, Semua Produk yang Anda Butuhkan Kini Tersedia.</p>
             @yield('content')
           </div>

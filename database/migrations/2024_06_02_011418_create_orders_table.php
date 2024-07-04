@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained();
-            $table->foreignId('product_id')->constrained();
             $table->date('order_date');
             $table->decimal('total_amount', 8, 2);
-            
+            $table->decimal('total_harga', 10, 2);
             $table->timestamps();
         });
     }
